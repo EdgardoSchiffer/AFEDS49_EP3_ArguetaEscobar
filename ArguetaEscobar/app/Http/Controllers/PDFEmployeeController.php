@@ -17,7 +17,6 @@ class PDFEmployeeController extends Controller
 
         $pdf = PDF::loadView('PDFEmployee.summary', compact('employees'));
         
-
         return $pdf->stream('report-'.now().'.pdf');
     }
 
