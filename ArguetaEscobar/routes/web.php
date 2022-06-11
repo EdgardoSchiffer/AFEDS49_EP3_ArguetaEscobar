@@ -22,6 +22,10 @@ use App\Http\Controllers\SupplierController;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/home');
+});
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -31,25 +35,26 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/document', DocumentController::class);
     Route::resource('api/bank', BankController::class);
 
-   
-    Route::get('/suppliers', function () {
-        return view('supplier.index');
-    });
+    Route::group(['middleware' => ['role:Administrator']], function () {
+        Route::get('/suppliers', function () {
+            return view('supplier.index');
+        });
 
-    Route::get('/documents', function () {
-        return view('document.index');
-    });
+        Route::get('/documents', function () {
+            return view('document.index');
+        });
 
-    Route::get('/banks', function () {
-        return view('bank.index');
-    });
+        Route::get('/banks', function () {
+            return view('bank.index');
+        });
 
-    Route::get('/reports', function () {
-        return view('reports');
-    });
+        Route::get('/reports', function () {
+            return view('reports');
+        });
 
-    Route::get('/summary', function () {
-        return view('summary.index');
+        Route::get('/summary', function () {
+            return view('summary.index');
+        });
     });
 });
 
