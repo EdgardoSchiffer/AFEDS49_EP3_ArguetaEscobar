@@ -12,6 +12,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,11 +37,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/supplier', SupplierController::class);
     Route::resource('api/document', DocumentController::class);
     Route::resource('api/bank', BankController::class);
+    Route::resource('api/user', UsersController::class);
 
     Route::resource('api/branch_office', BranchOfficeController::class);
     Route::resource('api/employee', EmployeeController::class);
 
     Route::group(['middleware' => ['role:Administrator']], function () {
+        Route::get('/users', function () {
+            return view('user.index');
+        });
+
         Route::get('/suppliers', function () {
             return view('supplier.index');
         });
