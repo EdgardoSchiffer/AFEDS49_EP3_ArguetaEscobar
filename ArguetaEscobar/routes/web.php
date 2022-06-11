@@ -11,6 +11,7 @@ use App\Http\Controllers\CheckController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PDFEmployeeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UsersController;
 
@@ -42,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/branch_office', BranchOfficeController::class);
     Route::resource('api/employee', EmployeeController::class);
 
+    Route::get('generateSummary/{id}', [PDFEmployeeController::class, 'generateSummary']);
+
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::get('/users', function () {
             return view('user.index');
@@ -69,6 +72,9 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/summary', function () {
             return view('summary.index');
+        });
+        Route::get('/summaryEmployee', function () {
+            return view('summaryEmployee.index');
         });
     });
 });

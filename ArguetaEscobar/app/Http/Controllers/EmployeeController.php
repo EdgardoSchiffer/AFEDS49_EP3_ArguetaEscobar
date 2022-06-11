@@ -86,7 +86,7 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         $data = $request->except('branch_office_name');
-        $data['branch_office_id'] = BranchOffice::where('branch_office_name', $request->name_branch_office)->first()->id;        
+        $data['branch_office_id'] = BranchOffice::where('name_branch_office', $request->name_branch_office)->first()->id;        
         $data['user_id']=1;
         Employee::where('id', $employee->id)->update($data);
         return response()->json(['message'=>'success']);

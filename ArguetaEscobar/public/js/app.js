@@ -7028,7 +7028,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     generateReport: function generateReport(id) {
-      window.open("/generateSummary/" + id);
+      window.open("/generateSummaryEmployee/" + id);
     }
   }
 });

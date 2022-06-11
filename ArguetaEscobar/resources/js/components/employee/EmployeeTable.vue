@@ -60,7 +60,7 @@ export default {
       this.$emit("edit", id);
     },
     generateReport(id) {
-      window.open("/generateSummary/" + id);
+      window.open("/generateSummaryEmployee/" + id);
     },
   },
 };
