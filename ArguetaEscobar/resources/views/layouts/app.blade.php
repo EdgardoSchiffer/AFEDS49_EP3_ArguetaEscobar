@@ -44,6 +44,9 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/users') }}">Usuarios</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/suppliers') }}">Proveedores</a>
                             </li>
                             <li class="nav-item">
