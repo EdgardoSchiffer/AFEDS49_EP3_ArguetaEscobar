@@ -47,15 +47,6 @@
                                 <a class="nav-link" href="{{ url('/users') }}">Usuarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/suppliers') }}">Proveedores</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/documents') }}">Cuentas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/banks') }}">Bancos</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/employees') }}">Empleados</a>
                             </li>
                         @endauth

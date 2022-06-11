@@ -35,9 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('generateSummary/{id}', [PDFController::class, 'generateSummary']);
 
-    Route::resource('api/supplier', SupplierController::class);
-    Route::resource('api/document', DocumentController::class);
-    Route::resource('api/bank', BankController::class);
     Route::resource('api/user', UsersController::class);
 
     Route::resource('api/branch_office', BranchOfficeController::class);
@@ -50,18 +47,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('user.index');
         });
 
-        Route::get('/suppliers', function () {
-            return view('supplier.index');
-        });
-
-        Route::get('/documents', function () {
-            return view('document.index');
-        });
-
-        Route::get('/banks', function () {
-            return view('bank.index');
-        });
-        
         Route::get('/employees', function () {
             return view('employee.index');
         });
@@ -70,9 +55,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('reports');
         });
 
-        Route::get('/summary', function () {
-            return view('summary.index');
-        });
         Route::get('/summaryEmployee', function () {
             return view('summaryEmployee.index');
         });
