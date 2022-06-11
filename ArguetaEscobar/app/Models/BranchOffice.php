@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class BranchOffice extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name_branch_office',
+        'address_branch_office',
+    ];
 }
