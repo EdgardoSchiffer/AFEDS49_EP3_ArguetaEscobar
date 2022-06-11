@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('employee_name');
             $table->string('age');
             $table->float('salary');
-            $table->foto('foto');
+            $table->string('foto');
             $table->foreignId('branch_office_id')->constrained('branch_offices');
             $table->timestamps();
         });
