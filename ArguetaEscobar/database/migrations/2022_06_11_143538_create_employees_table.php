@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->float('salary');
             $table->string('foto');
             $table->foreignId('branch_office_id')->constrained('branch_offices');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
