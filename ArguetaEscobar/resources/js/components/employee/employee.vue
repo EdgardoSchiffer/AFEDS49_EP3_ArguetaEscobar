@@ -10,10 +10,6 @@
           </div>
 
           <div class="col-md-4 pt-3">
-            <label>Código</label>
-            <input class="form-control" type="text" v-model="employee.code" />
-          </div>
-          <div class="col-md-4 pt-3">
             <label>Nombre</label>
             <input
               class="form-control"
@@ -44,6 +40,15 @@
               v-model="employee.salary"
             />
           </div>
+          <div class="col-md-4 pt-3">
+            <label>Edad</label>
+            <input
+              class="form-control"
+              type="number"
+              step="1"
+              v-model="employee.age"
+            />
+          </div>
 
           <div class="col-md-12 pt-3">
             <a href="#" class="btn btn-success" @click="save()">
@@ -52,7 +57,7 @@
           </div>
 
           <!-- Table -->
-          <document-table
+          <employee-table
             :data="employees"
             :headers="headers"
             @delete="deleteP($event)"
@@ -83,17 +88,17 @@ export default {
   data: () => {
     return {
       employee: {
-        code: "",
         employee_name: "",
         age: 0,
-        branch_office_name: "",
         salary: "0.00",
+        foto: "upload/image.png",
+        branch_office_name: "",
+        user_id: 1,
       },
         branch_offices: [],
       employees: [],
       headers: [
         "#",
-        "Código",
         "Nombre",
         "Salario",
         "Sucursual",
@@ -190,19 +195,19 @@ export default {
     },
 
     cleanInputs() {
-      this.employeet = {
-        code: "",
+      this.employee = {
         employee_name: "",
         branch_office_name: "",
         salary: "0.00",
+        foto: 'upload/image.png'
       };
       this.textButton = "Guardar";
     },
 
     async getResults(page = 1) {
       const res = await axios.get(this.pagination.path + "?page=" + page);
-      this.documents = res.data.documents.data;
-      this.pagination = res.data.documents;
+      this.employees = res.data.employees.data;
+      this.pagination = res.data.employees;
     },
   },
 };

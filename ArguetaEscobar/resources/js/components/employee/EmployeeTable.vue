@@ -14,10 +14,10 @@
         </tr>
         <tr v-for="(value, index) in data" :key="value.id">
           <td>{{ index + 1 }}</td>
-          <td>{{ value.code }}</td>
           <td>{{ value.employee_name }}</td>
+          <td>{{ value.age }}</td>
           <td>{{ value.salary }}</td>
-          <td>{{ value.branch_office_name }}</td>
+          <td></td>
           <td>
             <a href="#" class="btn btn-warning" @click="edit(value.id)"
               ><i class="fa fa-edit"></i> Editar</a

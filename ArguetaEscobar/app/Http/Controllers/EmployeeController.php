@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BranchOffice;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,10 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
-        Employee::insert($request->all());
+        $data = $request->except('branch_office_name');
+        $data['branch_office_id'] = BranchOffice::where('name_branch_office', $request->name_branch_office)->first()->id;        
+        $data['user_id']=1;
+        Employee::insert($data);    
         return response()->json(['message'=>'success']);
     }
 
@@ -81,8 +85,14 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
+        $data = $request->except('branch_office_name');
+        $data['branch_office_id'] = BranchOffice::where('branch_office_name', $request->name_branch_office)->first()->id;        
+        $data['user_id']=1;
+        Employee::where('id', $employee->id)->update($data);
+        return response()->json(['message'=>'success']);
+        /*
         Employee::where('id', $employee->id)->update($request->all());
-        return response()->json(["message"=>"success"]);
+        return response()->json(["message"=>"success"]);*/
     }
 
     /**
