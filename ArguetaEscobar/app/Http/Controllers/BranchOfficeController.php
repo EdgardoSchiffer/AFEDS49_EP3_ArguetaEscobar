@@ -15,6 +15,9 @@ class BranchOfficeController extends Controller
     public function index()
     {
         //
+        $branch_offices = BranchOffice::all();
+
+        return response()->json(['message' => 'success', 'branch_offices'=>$branch_offices]);
     }
 
     /**

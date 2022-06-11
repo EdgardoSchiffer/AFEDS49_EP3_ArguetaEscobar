@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\BranchOfficeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SupplierController;
 
 /*
@@ -35,6 +37,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/document', DocumentController::class);
     Route::resource('api/bank', BankController::class);
 
+    Route::resource('api/branch_office', BranchOfficeController::class);
+    Route::resource('api/employee', EmployeeController::class);
+
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::get('/suppliers', function () {
             return view('supplier.index');
@@ -46,6 +51,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/banks', function () {
             return view('bank.index');
+        });
+        
+        Route::get('/employees', function () {
+            return view('employee.index');
         });
 
         Route::get('/reports', function () {

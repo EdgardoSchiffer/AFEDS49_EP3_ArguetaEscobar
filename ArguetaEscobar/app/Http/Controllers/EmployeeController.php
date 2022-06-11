@@ -15,9 +15,15 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $employees = Employee::paginate(15);
+  /*      $employees = Employee::paginate(15);
 
         return response()->json(['message' => 'success', 'employees'=>$employees]);
+*/
+        $employees = Employee::select('*', "employees.id as id")
+        ->join('branch_offices as bo', 'employees.branch_office_id', '=', 'bo.id')
+        ->paginate(15);
+
+        return response()->json(['message' => 'success', 'documents'=>$employees]);
     }
 
     /**
