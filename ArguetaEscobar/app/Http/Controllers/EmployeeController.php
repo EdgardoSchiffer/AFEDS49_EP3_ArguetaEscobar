@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $employees = Employee::paginate(15);
+        $employees = Employee::where('user_id','=', Auth::id())->paginate(15);
 
         return response()->json(['message' => 'success', 'employees'=>$employees]);
 
@@ -51,7 +51,7 @@ class EmployeeController extends Controller
         //
         $data = $request->except('branch_office_name');
         $data['branch_office_id'] = BranchOffice::where('name_branch_office', $request->branch_office_name)->first()->id;
-        $data['user_id'] = Auth::id();;
+        $data['user_id'] = Auth::id();
         Employee::insert($data);
         return response()->json(['message'=>'success']);
     }
