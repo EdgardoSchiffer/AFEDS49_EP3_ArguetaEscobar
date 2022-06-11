@@ -22,6 +22,8 @@ class EmployeeController extends Controller
 
         return response()->json(['message' => 'success', 'employees'=>$employees]);
 
+
+        
 /*
         $employees = Employee::select('*', "employees.id as id")
         ->join('branch_offices as bo', 'employees.branch_office_id', '=', 'bo.id')
