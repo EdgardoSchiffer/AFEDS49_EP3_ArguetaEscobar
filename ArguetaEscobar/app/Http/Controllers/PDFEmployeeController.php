@@ -13,7 +13,7 @@ class PDFEmployeeController extends Controller
     public function generateSummaryEmployee($id)
     {
         //Date::setLocale('es');
-        $employees = Employee::where(['id'=>$id]);
+        $employees = Employee::all();
 
         $pdf = PDF::loadView('PDFEmployee.summary', compact('employees'));
         
