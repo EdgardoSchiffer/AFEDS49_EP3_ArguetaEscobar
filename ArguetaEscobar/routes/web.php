@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/branch_office', BranchOfficeController::class);
     Route::resource('api/employee', EmployeeController::class);
 
-    Route::get('generateSummary/{id}', [PDFEmployeeController::class, 'generateSummary']);
+    Route::get('generateSummaryEmployee/{id}', [PDFEmployeeController::class, 'generateSummaryEmployee']);
 
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::get('/users', function () {

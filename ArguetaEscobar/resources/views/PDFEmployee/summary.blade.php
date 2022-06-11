@@ -19,15 +19,15 @@
             <td>Sucursal</td>
             <td>Salario</td>
         </tr>
-        
-        @foreach ($employee as $value)
+
+        @foreach ($employees as $value)
             <tr>
-                <td>{{ $value->employee_name }}</td>
+                <td>{{ $value->id }}</td>
                 <td>{{ $value->age }}</td>
                 <td>{{ $value->branch_office_id }}</td>
                 <td>{{ $value->salary }}</td>
             </tr>
         @endforeach
-        
+         
     </table>
 </body>
