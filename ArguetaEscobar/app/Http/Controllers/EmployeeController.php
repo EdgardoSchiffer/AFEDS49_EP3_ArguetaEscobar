@@ -15,6 +15,9 @@ class EmployeeController extends Controller
     public function index()
     {
         //
+        $employees = Employee::paginate(15);
+
+        return response()->json(['message' => 'success', 'employees'=>$employees]);
     }
 
     /**
@@ -36,6 +39,8 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
+        Employee::insert($request->all());
+        return response()->json(['message'=>'success']);
     }
 
     /**
@@ -69,7 +74,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        Employee::where('id', $employee->id)->update($request->all());
+        return response()->json(["message"=>"success"]);
     }
 
     /**
@@ -81,5 +87,7 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         //
+        Employee::where('id', $employee->id)->delete();
+        return response()->json(["message"=>"success"]);
     }
 }
